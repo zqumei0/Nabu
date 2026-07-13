@@ -1,0 +1,28 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.idea/
+*.swp
+
+# Secrets / env
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*
+
+# Node / TypeScript (frontend, infra)
+node_modules/
+dist/
+build/
+*.tsbuildinfo
+coverage/
+npm-debug.log*
+
+# AWS CDK
+cdk.out/
+
+# Backend: add language-specific ignores (Go/Rust/Java) once the backend language is chosen
