@@ -13,3 +13,11 @@ Monorepo for the Nabu website: infra (CDK), frontend, backend, and an agent-faci
 - `backend/CLAUDE.md` — backend conventions
 
 Each service directory owns its own docs. Check the service's `CLAUDE.md` before working in it.
+
+## Planning new work
+
+Use the `/prd` skill (`.claude/skills/prd/`) to scope a new plan — it carries a conversation to a `docs/plans/` plan doc plus a milestones/task-breakdown doc, following the same process used to build the frontend scaffold plan.
+
+## Testing
+
+Target 80% code coverage across all packages (frontend, backend, infra). Enforce via each language's native coverage tooling (e.g. `go test -cover` for backend, Vitest's `@vitest/coverage-v8` for frontend) rather than a separate cross-language tool. New packages should wire up coverage measurement as part of their initial scaffold, not as a later retrofit.
