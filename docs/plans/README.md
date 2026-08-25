@@ -28,5 +28,5 @@ For plans with a task breakdown (milestones + per-task cards, e.g. motivation/as
 | Plan | Status | Created | Updated |
 |------|--------|---------|---------|
 | [Infra scaffold](2026-08-23-infra-scaffold.md) | proposed | 2026-08-23 | 2026-08-23 |
-| [Frontend scaffold](2026-08-23-frontend-scaffold.md) | proposed | 2026-08-23 | 2026-08-24 |
+| [Frontend scaffold](2026-08-23-frontend-scaffold.md) | active | 2026-08-23 | 2026-08-24 |
 | [Backend coverage retrofit](2026-08-24-backend-coverage-retrofit.md) | proposed | 2026-08-24 | 2026-08-24 |

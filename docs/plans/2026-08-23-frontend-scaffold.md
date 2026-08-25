@@ -1,6 +1,6 @@
 ---
 title: Stand up frontend (Vite + React SPA) with UI/UX mocks and a mocked backend API layer
-status: proposed
+status: active
 created: 2026-08-23
 updated: 2026-08-24
 ---
