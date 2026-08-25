@@ -15,6 +15,7 @@ Each task: **Motivation** (why it exists / what it solves), **Assumptions** (pre
 - **Description:** Run `npm create vite@latest . -- --template react-ts --force` inside `frontend/`, then `npm install`. Produces `package.json`, `tsconfig*.json`, `vite.config.ts`, `index.html`, `src/main.tsx`, `src/App.tsx`, `public/`.
 - **Acceptance Criteria:** `frontend/package.json` exists with react/react-dom/vite/typescript deps; `npm run dev` serves the default Vite+React template; `npx tsc --noEmit` passes clean on the untouched template.
 - **Dependencies:** None (first task).
+- **As actually executed:** the installed `create-vite` version doesn't have a `--force` flag — the correct flag is `--overwrite` (plus `--no-interactive` to avoid a stuck prompt in a non-TTY shell): `npx create-vite@latest . --template react-ts --overwrite --no-interactive`. **Important gotcha:** `--overwrite` removes *all* existing files in the target directory first, not just conflicting ones — it deleted `frontend/CLAUDE.md`, `docs/design.md`, and both `research/` files (all committed, tracked files) before scaffolding. Recovered via `git restore` since nothing was staged yet. If re-running this in a directory with existing tracked files, restore them afterward the same way, or scaffold into a temp directory and copy the generated files in instead. Also removed the template's generated `.gitignore` and `README.md` after scaffolding, to keep this repo's single-root-`.gitignore` / per-service-`CLAUDE.md`-only convention (matches `backend/`, which has neither).
 
 ### M1-2 — Install runtime dependencies
 
@@ -47,6 +48,7 @@ Each task: **Motivation** (why it exists / what it solves), **Assumptions** (pre
 - **Description:** Add a `test` block to `vite.config.ts`: `environment: 'jsdom'`, `globals: true`, `setupFiles: './src/setupTests.ts'`, `coverage: { provider: 'v8', thresholds: { lines: 80, functions: 80, branches: 80, statements: 80 } }`. Add a `"test": "vitest run"` script to `package.json`.
 - **Acceptance Criteria:** `npm run test -- --coverage` runs (even with zero tests, executes and reports 0% rather than erroring on missing config).
 - **Dependencies:** M1-3.
+- **As actually executed:** also added `passWithNoTests: true` to the `test` block — without it, Vitest exits non-zero on "no test files found," which would fail this task's own acceptance criterion at this point in the plan (M2/M3 haven't added test files yet). Also added a `/// <reference types="vitest/config" />` triple-slash directive at the top of `vite.config.ts` so the `test` field type-checks against Vite 8 / Vitest 4's types.
 
 ### M1-6 — Test setup file
 

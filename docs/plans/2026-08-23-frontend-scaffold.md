@@ -179,15 +179,15 @@ Each task below has a full description (motivation, assumptions, description, ac
 
 ### M1 — Scaffold & Tooling
 
-- [ ] **[M1-1]** `npm create vite@latest . -- --template react-ts --force` in `frontend/`, then `npm install`
-- [ ] **[M1-2]** Install runtime deps: `react-router-dom`, `@tanstack/react-query`
-- [ ] **[M1-3]** Install dev deps: `tailwindcss`, `@tailwindcss/vite`, `vitest`, `@vitest/coverage-v8`, `@testing-library/react`, `@testing-library/jest-dom`, `@testing-library/user-event`, `jsdom`
-- [ ] **[M1-4]** Wire Tailwind: `@tailwindcss/vite` plugin in `vite.config.ts`, `@import "tailwindcss";` in `src/index.css`
-- [ ] **[M1-5]** Add `test` block to `vite.config.ts` (`environment: 'jsdom'`, `globals: true`, `setupFiles`, `coverage.thresholds` at 80%)
-- [ ] **[M1-6]** `src/setupTests.ts` (imports `@testing-library/jest-dom`)
-- [ ] **[M1-7]** `.env.example` (`VITE_USE_MOCK_API=true`)
-- [ ] **[M1-8]** Add `.vite/` and `*.local` to root `.gitignore`
-- [ ] Verify: `npm run dev` serves the default template; `npx tsc --noEmit` passes clean
+- [x] **[M1-1]** `npm create vite@latest . -- --template react-ts --force` in `frontend/`, then `npm install`
+- [x] **[M1-2]** Install runtime deps: `react-router-dom`, `@tanstack/react-query`
+- [x] **[M1-3]** Install dev deps: `tailwindcss`, `@tailwindcss/vite`, `vitest`, `@vitest/coverage-v8`, `@testing-library/react`, `@testing-library/jest-dom`, `@testing-library/user-event`, `jsdom`
+- [x] **[M1-4]** Wire Tailwind: `@tailwindcss/vite` plugin in `vite.config.ts`, `@import "tailwindcss";` in `src/index.css`
+- [x] **[M1-5]** Add `test` block to `vite.config.ts` (`environment: 'jsdom'`, `globals: true`, `setupFiles`, `coverage.thresholds` at 80%)
+- [x] **[M1-6]** `src/setupTests.ts` (imports `@testing-library/jest-dom`)
+- [x] **[M1-7]** `.env.example` (`VITE_USE_MOCK_API=true`)
+- [x] **[M1-8]** Add `.vite/` and `*.local` to root `.gitignore`
+- [x] Verify: `npm run dev` serves the default template; `npx tsc --noEmit` passes clean
 
 ### M2 — Shared Foundations (data layer, auth, shared UI)
 
@@ -250,3 +250,4 @@ Each task below has a full description (motivation, assumptions, description, ac
 - 2026-08-24: Switched to a feature-based directory layout and expanded the plan to an 80% coverage target (repo-wide standard, recorded in root `CLAUDE.md`), per user feedback. Backend coverage retrofit noted as a separate follow-up.
 - 2026-08-24: Added milestone/task breakdown (M1 Scaffold & Tooling, M2 Shared Foundations, M3 Screens & Routing, M4 Coverage Verification & Build, M5 Documentation) for progress tracking.
 - 2026-08-24: Added per-task descriptions (motivation, assumptions, description, acceptance criteria, dependencies) for all 38 tasks in [`2026-08-23-frontend-scaffold-tasks.md`](2026-08-23-frontend-scaffold-tasks.md); checklist items above tagged with task IDs (e.g. `M1-1`) to cross-reference.
+- 2026-08-24: Status flipped to `active`, M1 (Scaffold & Tooling) implemented and verified — one commit per task, per user request. `create-vite`'s actual flag is `--overwrite` (not `--force`) and it wipes the whole target directory first; recovered the repo's existing `frontend/` docs via `git restore` (see M1-1's task card for the gotcha). All M1 acceptance criteria verified: `tsc --noEmit` clean, `npm run build` succeeds, `npm run test -- --coverage` exits 0, dev server serves 200.
