@@ -17,4 +17,5 @@ Each plan is its own file (start from `TEMPLATE.md`) with a `status` field in it
 
 | Plan | Status | Created | Updated |
 |------|--------|---------|---------|
-| | | | |
+| [Infra scaffold](2026-08-23-infra-scaffold.md) | proposed | 2026-08-23 | 2026-08-23 |
+| [Frontend scaffold](2026-08-23-frontend-scaffold.md) | proposed | 2026-08-23 | 2026-08-23 |

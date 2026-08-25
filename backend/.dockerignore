@@ -1,0 +1,7 @@
+.git
+docs/
+research/
+*.md
+bin/
+.DS_Store
+*.test

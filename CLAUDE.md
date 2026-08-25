@@ -1,6 +1,6 @@
 # Nabu
 
-Monorepo for the Nabu website: infra (CDK), frontend, backend, and an agent-facing product component. Backend language and full scaffolding are not yet decided.
+Monorepo for the Nabu website: infra (CDK), frontend, backend, and an agent-facing product component. Backend is Go with an initial scaffold in place (see [ADR-0001](docs/architecture/decisions/0001-go-for-backend-language.md)); frontend and infra are not yet scaffolded.
 
 ## Where to look
 
