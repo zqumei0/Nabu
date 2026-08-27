@@ -1,0 +1,55 @@
+import type { Vulnerability } from '../types'
+
+export const vulnerabilityFixtures: Vulnerability[] = [
+  {
+    id: 'vuln-1',
+    orgId: 'org-1',
+    title: 'SQL injection in login form',
+    description: 'Unsanitized input allows SQL injection via the username field.',
+    severity: 'critical',
+    cve: 'CVE-2026-0001',
+    discoveredAt: '2026-07-01',
+  },
+  {
+    id: 'vuln-2',
+    orgId: 'org-1',
+    title: 'Outdated OpenSSL version',
+    description: 'Server uses OpenSSL 1.0.2, missing several security patches.',
+    severity: 'high',
+    cve: 'CVE-2026-0002',
+    discoveredAt: '2026-07-05',
+  },
+  {
+    id: 'vuln-3',
+    orgId: 'org-1',
+    title: 'Missing rate limiting on API',
+    description: 'Public API endpoints have no rate limiting, enabling brute-force attacks.',
+    severity: 'medium',
+    discoveredAt: '2026-07-10',
+  },
+  {
+    id: 'vuln-4',
+    orgId: 'org-1',
+    title: 'Verbose error messages',
+    description: 'Stack traces are exposed to end users in production.',
+    severity: 'low',
+    discoveredAt: '2026-07-12',
+  },
+  {
+    id: 'vuln-5',
+    orgId: 'org-2',
+    title: 'Cross-site scripting in comments',
+    description: 'User-supplied comment text is rendered without escaping.',
+    severity: 'high',
+    cve: 'CVE-2026-0003',
+    discoveredAt: '2026-07-15',
+  },
+  {
+    id: 'vuln-6',
+    orgId: 'org-2',
+    title: 'Weak password policy',
+    description: 'Minimum password length is 4 characters with no complexity requirements.',
+    severity: 'medium',
+    discoveredAt: '2026-07-18',
+  },
+]
