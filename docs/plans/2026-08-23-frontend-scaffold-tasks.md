@@ -117,6 +117,7 @@ Each task: **Motivation** (why it exists / what it solves), **Assumptions** (pre
 - **Description:** `getCurrentUser()`, `listUsers()` — same mock/throw pattern as M2-4.
 - **Acceptance Criteria:** `users.test.ts` covers `getCurrentUser` returning the fixture matching `AuthContext`'s `FAKE_USER` id.
 - **Dependencies:** M2-2, M2-3.
+- **As actually executed:** also added `getUser(id)` beyond the original scope (`getCurrentUser`/`listUsers` only) — `TicketList`/`TicketDetailPage` (M3) need to resolve an arbitrary `assigneeId` to a display name, not just look up the current user or list everyone.
 
 ### M2-6 — Query client setup (`lib/queryClient.ts`)
 
@@ -140,7 +141,8 @@ Each task: **Motivation** (why it exists / what it solves), **Assumptions** (pre
 - **Assumptions:** M2-7 complete (`useAuth` available).
 - **Description:** Reads `useAuth()`; if no user, `<Navigate to="/login" replace />`; else renders `<AppShell><Outlet /></AppShell>`.
 - **Acceptance Criteria:** `ProtectedRoute.test.tsx` verifies redirect-when-logged-out and children-render-when-logged-in.
-- **Dependencies:** M2-7, M2-9 (renders `AppShell`).
+- **Dependencies:** M2-7, M2-9 (renders `AppShell`) — executed after M2-9 for this reason, despite the lower task number.
+- **As actually executed:** the test drives auth state by rendering directly inside `<AuthContext.Provider value={...}>` rather than calling `AuthProvider`'s `login()` inside a `useEffect` helper — an effect-based approach raced against `<Navigate>`'s own redirect effect (both fire on mount) and was flaky. Direct context injection is deterministic and doesn't depend on effect ordering. `AuthContextValue` was exported from `AuthContext.tsx` to support this.
 
 ### M2-9 — App shell layout (`components/AppShell.tsx`)
 

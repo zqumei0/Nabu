@@ -191,19 +191,19 @@ Each task below has a full description (motivation, assumptions, description, ac
 
 ### M2 — Shared Foundations (data layer, auth, shared UI)
 
-- [ ] **[M2-1]** `src/api/types.ts` (provisional types, PROVISIONAL header comment)
-- [ ] **[M2-2]** `src/api/fixtures/{tickets,vulnerabilities,organizations,users}.ts`
-- [ ] **[M2-3]** `src/api/client.ts` + `client.test.ts`
-- [ ] **[M2-4]** `src/api/organizations.ts` + `organizations.test.ts`
-- [ ] **[M2-5]** `src/api/users.ts` + `users.test.ts`
-- [ ] **[M2-6]** `src/lib/queryClient.ts`
-- [ ] **[M2-7]** `src/features/auth/AuthContext.tsx` + `AuthContext.test.tsx`, `useAuth.ts`
-- [ ] **[M2-8]** `src/components/ProtectedRoute.tsx` + `ProtectedRoute.test.tsx`
-- [ ] **[M2-9]** `src/components/AppShell.tsx` + `AppShell.test.tsx`
-- [ ] **[M2-10]** `src/components/SeverityBadge.tsx` + `SeverityBadge.test.tsx`
-- [ ] **[M2-11]** `src/components/StatusBadge.tsx` + `StatusBadge.test.tsx`
-- [ ] **[M2-12]** `src/components/LoadingState.tsx`, `EmptyState.tsx`, `ErrorState.tsx`
-- [ ] **[M2-13]** `src/main.tsx` (`QueryClientProvider` → `BrowserRouter` → `AuthProvider` → `App`)
+- [x] **[M2-1]** `src/api/types.ts` (provisional types, PROVISIONAL header comment)
+- [x] **[M2-2]** `src/api/fixtures/{tickets,vulnerabilities,organizations,users}.ts`
+- [x] **[M2-3]** `src/api/client.ts` + `client.test.ts`
+- [x] **[M2-4]** `src/api/organizations.ts` + `organizations.test.ts`
+- [x] **[M2-5]** `src/api/users.ts` + `users.test.ts`
+- [x] **[M2-6]** `src/lib/queryClient.ts`
+- [x] **[M2-7]** `src/features/auth/AuthContext.tsx` + `AuthContext.test.tsx`, `useAuth.ts`
+- [x] **[M2-8]** `src/components/ProtectedRoute.tsx` + `ProtectedRoute.test.tsx`
+- [x] **[M2-9]** `src/components/AppShell.tsx` + `AppShell.test.tsx`
+- [x] **[M2-10]** `src/components/SeverityBadge.tsx` + `SeverityBadge.test.tsx`
+- [x] **[M2-11]** `src/components/StatusBadge.tsx` + `StatusBadge.test.tsx`
+- [x] **[M2-12]** `src/components/LoadingState.tsx`, `EmptyState.tsx`, `ErrorState.tsx`
+- [x] **[M2-13]** `src/main.tsx` (`QueryClientProvider` → `BrowserRouter` → `AuthProvider` → `App`)
 
 ### M3 — Screens & Routing
 
@@ -251,3 +251,4 @@ Each task below has a full description (motivation, assumptions, description, ac
 - 2026-08-24: Added milestone/task breakdown (M1 Scaffold & Tooling, M2 Shared Foundations, M3 Screens & Routing, M4 Coverage Verification & Build, M5 Documentation) for progress tracking.
 - 2026-08-24: Added per-task descriptions (motivation, assumptions, description, acceptance criteria, dependencies) for all 38 tasks in [`2026-08-23-frontend-scaffold-tasks.md`](2026-08-23-frontend-scaffold-tasks.md); checklist items above tagged with task IDs (e.g. `M1-1`) to cross-reference.
 - 2026-08-24: Status flipped to `active`, M1 (Scaffold & Tooling) implemented and verified — one commit per task, per user request. `create-vite`'s actual flag is `--overwrite` (not `--force`) and it wipes the whole target directory first; recovered the repo's existing `frontend/` docs via `git restore` (see M1-1's task card for the gotcha). All M1 acceptance criteria verified: `tsc --noEmit` clean, `npm run build` succeeds, `npm run test -- --coverage` exits 0, dev server serves 200.
+- 2026-08-27: M2 (Shared Foundations) implemented and verified — one commit per task. Executed M2-9 (AppShell) before M2-8 (ProtectedRoute) since ProtectedRoute renders AppShell, despite the lower task number — dependency order within a milestone isn't strictly linear by ID. Two deviations from the task cards, both recorded there: M2-5 added `getUser(id)` beyond `getCurrentUser`/`listUsers` (needed by M3's ticket/assignee display); M2-8's test drives auth state via direct `AuthContext.Provider` injection instead of an effect-based login helper, which raced against `<Navigate>`'s own redirect effect and was flaky. 24/24 tests passing, `tsc --noEmit` clean, `npm run build` succeeds.
