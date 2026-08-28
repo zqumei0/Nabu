@@ -21,6 +21,8 @@ build/
 *.tsbuildinfo
 coverage/
 npm-debug.log*
+.vite/
+*.local
 
 # AWS CDK
 cdk.out/
